@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block conten %}
+  <header>
+    <h1 style="padding-left: 350px; ">Guess the Number!</h1>
+    <span style="padding-top: 30px; padding-left: 250px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Conditions!</span>
+    <p style="padding-top:10px ; padding-left: 250px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> <br> Number should be 1 to 100. <br>You have only 5 attempt.</p>
+   
+  </header>
+  {% endblock %}
+  {% block content %}
+  <main>
+    <section class="left">
+      <form method="post">
+        {% csrf_token %}
+        <input type="number" placeholder="Guess the Number" class="guess" style="margin-left: 250px; height: 70px; width: 200px; border-radius: 10px;" name="guess" min="0" max="100" required>
+        <br><br>
+        <button class="btn check" type="submit" style="height: 30px; width: 100px;  margin-left: 290px; border-radius: 10px; background-color: blueviolet; color: aliceblue;">Submit</button>
+      </form>
+    </section>
+    <section class="right" style="padding-left: 250px; font-family: 'Times New Roman', Times, serif; color: red;">
+      {% if message %}
+        <p class="message">{{ message }}</p>
+      {% endif %}
+    </section>
+  </main>
+{% endblock %}
